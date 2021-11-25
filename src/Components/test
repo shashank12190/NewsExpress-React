@@ -1,0 +1,9 @@
+<Switch>
+        <Route path="/"><News apiKey={apiKey} country={country} pageSize={pageSize} category={general}/></Route>
+        <Route path="/business"><News apiKey={apiKey} country={country} pageSize={pageSize} category={business}/></Route>
+        <Route path="/entertainment"><News apiKey={apiKey} country={country} pageSize={pageSize} category={entertainment}/></Route>
+        <Route path="/health"><News apiKey={apiKey} country={country} pageSize={pageSize} category={health}/></Route>
+        <Route path="/science"><News apiKey={apiKey} country={country} pageSize={pageSize} category={science}/></Route>
+        <Route path="/sports"><News apiKey={apiKey} country={country} pageSize={pageSize} category={sports}/></Route>
+        <Route path="/technology"><News apiKey={apiKey} country={country} pageSize={pageSize} category={technology}/></Route>
+</Switch> 
