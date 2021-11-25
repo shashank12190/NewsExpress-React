@@ -22,44 +22,34 @@ export default function News(props) {
         setTotalResults(parsedData.totalResults)
     }
     const handlePrevClick = async () => {
-        console.log('previous');
-        let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&apiKey=${props.apiKey}&pageSize=${props.pageSize}&category=${props.category}&page=${page - 1}`
-        setLoading(true)
-        let data = await fetch(url)
-        let parsedData = await data.json()
-        setLoading(false)
-        setArticles(parsedData.articles)
         setPage(page - 1)
+        updateNews()
 
     }
     const handleNextClick = async () => {
-        if (page + 1 > Math.ceil(totalResults / props.pageSize)) {
-
-        } else {
-            console.log('next');
-            let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&apiKey=${props.apiKey}&pageSize=${props.pageSize}&category=${props.category}&page=${page + 1}`
-            setLoading(true)
-            let data = await fetch(url)
-            let parsedData = await data.json()
-            setLoading(false)
-            setArticles(parsedData.articles)
-            setPage(page + 1)
-        }
+        setPage(page + 1)
+        updateNews()
+    }
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
     useEffect(() => {
         updateNews()
-
+        document.title = `${capitalizeFirstLetter(props.category)}- NewsExpress`
     }, [])
     return (
         <div className="container">
             <div className="container my-2 ">
-                <h1 className="text-center"> NEWS EXPRESSS - Top News</h1>
+                <h1 style={{
+                    margin: "25px 0px", fontStyle: 'italic',
+                    color: "darkblue"
+                }} className="text-center"> NEWS EXPRESSS - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
             </div>
             {loading && <Spinner />}
             <div className="row">
                 {!loading && articles.map((element) => {
                     return <div className="col-md-4" key={element.url}>
-                        <NewsItem title={element.title} description={element.description} urlToImage={element.urlToImage} url={element.url} />
+                        <NewsItem title={element.title} description={element.description} urlToImage={element.urlToImage} url={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
                     </div>
                 })}
 
