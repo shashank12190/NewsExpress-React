@@ -14,15 +14,17 @@ export default function News(props) {
     const [loading, setLoading] = useState(true)
 
     let updateNews = async () => {
+        props.setProgress(10)
         let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&apiKey=${props.apiKey}&pageSize=${props.pageSize}&category=${props.category}&page=${page}`
         setLoading(true)
+        props.setProgress(30)
         let data = await fetch(url)
         let parsedData = await data.json()
         console.log(parsedData);
         setArticles(parsedData.articles)
         setTotalResults(parsedData.totalResults)
         setLoading(false)
-
+        props.setProgress(100)
     }
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);

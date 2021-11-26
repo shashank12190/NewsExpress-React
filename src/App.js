@@ -3,22 +3,31 @@ import "./App.css";
 import NavBar from "./Components/NavBar";
 import News from "./Components/News";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
+import React, { useState } from 'react'
+
+
 
 function App() {
   const apiKey = "64c90b1a33264c7b90f74a36dd046d19";
   const country = "in";
   const pageSize = 20;
-  // const category = "sports";
-
+  const [progress, setProgress] = useState(0)
   return (
     <div>
       <Router>
         <NavBar />
+        <LoadingBar
+          color='#f11946'
+          progress={progress}
+          height={3}
+        />
         <Switch>
           <Route exact path="/">
             <News
               key="general"
               apiKey={apiKey}
+              setProgress={setProgress}
               country={country}
               pageSize={pageSize}
               category={"general"}
@@ -28,6 +37,7 @@ function App() {
             <News
               key="business"
               apiKey={apiKey}
+              setProgress={setProgress}
               country={country}
               pageSize={pageSize}
               category={"business"}
@@ -37,6 +47,7 @@ function App() {
             <News
               key="entertainment"
               apiKey={apiKey}
+              setProgress={setProgress}
               country={country}
               pageSize={pageSize}
               category={"entertainment"}
@@ -46,6 +57,7 @@ function App() {
             <News
               key="health"
               apiKey={apiKey}
+              setProgress={setProgress}
               country={country}
               pageSize={pageSize}
               category={"health"}
@@ -55,6 +67,7 @@ function App() {
             <News
               key="science"
               apiKey={apiKey}
+              setProgress={setProgress}
               country={country}
               pageSize={pageSize}
               category={"science"}
@@ -64,6 +77,7 @@ function App() {
             <News
               key="sports"
               apiKey={apiKey}
+              setProgress={setProgress}
               country={country}
               pageSize={pageSize}
               category={"sports"}
@@ -73,6 +87,7 @@ function App() {
             <News
               key="technology"
               apiKey={apiKey}
+              setProgress={setProgress}
               country={country}
               pageSize={pageSize}
               category={"technology"}
