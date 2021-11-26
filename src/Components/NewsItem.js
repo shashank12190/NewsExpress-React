@@ -3,7 +3,7 @@ import React from 'react'
 export default function NewsItem(props) {
     let { title, description, urlToImage, url, author, date, source } = props
     return (
-        <div>
+        <div className="">
             <div className="card" >
                 <div >
                     <span className="badge bg-success" style={{ display: "flex", justifyContent: "flex-end", position: "absolute" }} >

@@ -47,7 +47,7 @@ export default function News(props) {
         <>
             <div className="container my-4 ">
                 <h1 style={{
-                    margin: "25px 0px", fontStyle: 'italic',
+                    margin: "80px 0px 25px 0px", fontStyle: 'italic',
                     color: "darkblue"
                 }} className="text-center"> NEWS EXPRESSS - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
             </div>
